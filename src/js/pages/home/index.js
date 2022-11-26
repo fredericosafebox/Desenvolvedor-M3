@@ -1,14 +1,10 @@
 import React, { createElement } from "react";
-import Painel from "../../components/painel";
+import Header from "../../components/header";
+
 const e = React.createElement;
 
 function Home() {
-  return e(
-    "div",
-    { className: "home" },
-    "Hello Home Page",
-    createElement(Painel)
-  );
+  return e("div", { className: "app" }, e(Header));
 }
 
 export default Home;

@@ -1,17 +1,15 @@
+@use "root";
+@use "header";
+@use "aside";
+@use "shop";
 @import "reset";
 
 * {
+  font-family: root.$base-font;
   box-sizing: border-box;
 }
 
-.home {
+.app {
   width: 100vw;
   height: 100vh;
-  background: black;
-}
-
-.painel {
-  width: 100%;
-  background: whitesmoke;
-  height: 3rem;
 }

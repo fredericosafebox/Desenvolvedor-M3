@@ -1,0 +1,53 @@
+@use "root";
+
+.header {
+  background: root.$pure-white;
+  font-size: 2rem;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.15rem solid root.$grey-1;
+
+  .header__menu {
+    height: 100%;
+    width: 100%;
+    max-width: 80rem;
+    min-width: 23rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__menu--logo {
+      height: 2rem;
+    }
+
+    .header__menu--cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+      width: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      .floating_number {
+        background: root.$primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: root.$pure-white;
+        font-weight: 400;
+        height: 0.8rem;
+        width: 0.8rem;
+        font-size: 0.7rem;
+        border-radius: 1rem;
+        position: absolute;
+        margin-bottom: -0.8rem;
+        margin-right: -0.8rem;
+      }
+    }
+  }
+}
