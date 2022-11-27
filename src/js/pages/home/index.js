@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import api from "../../../services/api";
 import Header from "../../components/header";
 import Aside from "../../components/aside";
+import Shop from "../../components/shop";
 import OrderByMobile from "../../components/order_by_Mobile";
 import FilterByMobile from "../../components/filter_by_mobile";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,12 +23,12 @@ function Home() {
   }, []);
 
   const { value: isModal, view } = useSelector((state) => state.modal);
-  // const vitrine = useSelector((state) => state.products.value);
 
   return e(
-    "div",
-    { className: "app" },
-    e("main", { className: "app__main" }, e(Header), e(Aside)),
+    "main",
+    { className: "app__main" },
+    e(Header),
+    e("div", { className: "app__main--wrapper" }, e(Aside), e(Shop)),
     isModal && view == "order" && e(OrderByMobile),
     isModal && view == "filter" && e(FilterByMobile)
   );

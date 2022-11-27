@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const e = React.createElement;
 
 function Header() {
-  const counter = useSelector((state) => state.counter.value);
+  const counter = useSelector((state) => state.cart.qtd);
   return e(
     "header",
     { className: "header" },

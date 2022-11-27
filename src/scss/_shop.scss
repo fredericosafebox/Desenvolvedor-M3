@@ -1,1 +1,105 @@
 @use "root";
+
+.shop {
+  display: flex;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  flex: 1;
+  min-width: 20rem;
+
+  .shop__products {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 974px;
+    overflow-y: auto;
+    flex: 1;
+    overflow-y: auto;
+
+    .shop__products--card {
+      width: 9rem;
+      height: 22.2rem;
+      display: flex;
+      flex-direction: column;
+
+      .card__display {
+        display: flex;
+        width: 100%;
+        height: 75%;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+
+        .card__display--img {
+          height: 100%;
+          transition: 1s;
+        }
+        &:hover .card__display--img {
+          transform: scale(1.1);
+        }
+      }
+
+      .card__title {
+        margin-top: 0.8rem;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+
+      .card__table {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        width: 100%;
+        .card__price {
+          font-size: 1rem;
+          font-weight: 600;
+          width: 100%;
+          text-align: center;
+          color: root.$pure-black;
+        }
+
+        .card__parcelamento {
+          color: root.$grey-2;
+          font-size: 1rem;
+          font-weight: 400;
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      .card__button {
+        width: 100%;
+        padding: 0.4rem 0;
+        color: root.$pure-white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background: root.$pure-black;
+        cursor: pointer;
+        transition: 1s;
+      }
+
+      @media (width > 352px) {
+        width: 10rem;
+        height: 22.2rem;
+      }
+      @media (width > 768px) {
+        width: 12.2rem;
+        height: 26.5rem;
+      }
+    }
+
+    .shop__products--loader {
+    }
+
+    @media (width > 768px) {
+      padding: 0 3rem;
+      gap: 4rem;
+    }
+  }
+}
