@@ -1,0 +1,43 @@
+@use "root";
+
+.modal {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 765px;
+  height: 100%;
+  background: root.$pure-white;
+  transition: 1s;
+  display: flex;
+  flex-direction: column;
+
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    border-bottom: 1px solid root.$grey-2;
+    padding: 0 2rem;
+    min-width: 20rem;
+
+    .modal__header--title {
+      color: root.$grey-2;
+      font-size: 2rem;
+      font-family: root.$base-font;
+      font-weight: 400;
+    }
+  }
+
+  .modal__body {
+    width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-gutter: true;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+}

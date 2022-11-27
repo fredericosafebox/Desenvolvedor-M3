@@ -1,0 +1,48 @@
+@use "root";
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  width: 100%; //mobile first
+
+  h2 {
+    font-size: 2rem;
+    color: root.$grey-3;
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .aside__buttonBox {
+    min-width: 18rem;
+    width: 100%;
+    max-width: 25rem;
+    height: 3.1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+
+    button {
+      width: 45%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: root.$grey-2;
+      border: 1px solid root.$grey-2;
+    }
+    button + button {
+      border-left: 0 solid root.$grey-2;
+    }
+  }
+
+  @media (width > 768px) {
+    flex: 1;
+    max-width: 15rem;
+    background: blue;
+  }
+}

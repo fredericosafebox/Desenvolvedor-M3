@@ -2,14 +2,39 @@
 @use "header";
 @use "aside";
 @use "shop";
+@use "modal";
 @import "reset";
 
 * {
   font-family: root.$base-font;
   box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 .app {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .app__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    min-width: 20rem;
+
+    flex: 1;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
