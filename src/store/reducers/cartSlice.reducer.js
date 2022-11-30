@@ -4,6 +4,7 @@ const initialState = {
   itens: [],
   qtd: 0,
   subtotal: 0,
+  isOpen: false,
 };
 
 export const cartSlice = createSlice({
@@ -29,8 +30,14 @@ export const cartSlice = createSlice({
       state.subtotal = 0;
       state.itens = [];
     },
+    openCart: (state) => {
+      state.isOpen = true;
+    },
+    closeCart: (state) => {
+      state.isOpen = false;
+    },
   },
 });
 
-export const { addProduct, clearCart } = cartSlice.actions;
+export const { addProduct, clearCart, openCart, closeCart } = cartSlice.actions;
 export default cartSlice.reducer;

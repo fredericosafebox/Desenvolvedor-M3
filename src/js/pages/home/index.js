@@ -11,6 +11,7 @@ import { loadList } from "../../../store/reducers/productsSlice.reducer";
 import { setWidth } from "../../../store/reducers/viewSlice.reducer";
 import OrderByChart from "../../components/order_by_chart";
 import { SlArrowRight } from "react-icons/sl";
+import Cart from "../../components/cart";
 
 const e = React.createElement;
 
@@ -30,6 +31,7 @@ function Home() {
   }, []);
 
   const isMobile = useSelector((state) => state.view.isMobile);
+  const isCart = useSelector((state) => state.cart.isOpen);
   return e(
     "main",
     { className: "app__main" },
@@ -62,7 +64,8 @@ function Home() {
     ),
     e("foot", { className: "footer" }, "M3: Implantação de E-commerce VTEX"),
     isMobile && e(OrderByMobile),
-    isMobile && e(FilterByMobile)
+    isMobile && e(FilterByMobile),
+    isCart && e(Cart)
   );
 }
 
