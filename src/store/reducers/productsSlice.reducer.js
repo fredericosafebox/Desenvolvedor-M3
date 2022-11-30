@@ -173,6 +173,29 @@ export const produceSlice = createSlice({
     loadMore(state) {
       state.range += 3;
     },
+    orderBy(state, action) {
+      const filtered = [...state.filteredList];
+      const vitrine = [...state.value];
+      switch (action.payload) {
+        case "date":
+          filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+          vitrine.sort((a, b) => new Date(b.date) - new Date(a.date));
+          state.filteredList = [...filtered];
+          state.value = [...vitrine];
+          break;
+        case "high":
+          filtered.sort((a, b) => b.price - a.price);
+          vitrine.sort((a, b) => b.price - a.price);
+          state.filteredList = [...filtered];
+          state.value = [...vitrine];
+          break;
+        default:
+          filtered.sort((a, b) => a.price - b.price);
+          vitrine.sort((a, b) => a.price - b.price);
+          state.filteredList = [...filtered];
+          state.value = [...vitrine];
+      }
+    },
   },
 });
 
@@ -186,5 +209,6 @@ export const {
   removePrice,
   removeSize,
   loadMore,
+  orderBy,
 } = produceSlice.actions;
 export default produceSlice.reducer;

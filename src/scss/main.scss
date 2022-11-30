@@ -91,6 +91,21 @@
     }
   }
 
+  .order__wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    .order__button {
+      width: 100%;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: root.$pure-black;
+      text-align: start;
+    }
+  }
+
   .active {
     width: 100%;
   }

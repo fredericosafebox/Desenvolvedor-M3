@@ -14,7 +14,7 @@
     gap: 1rem;
     width: 100%;
     flex-wrap: wrap;
-    max-width: 974px;
+    max-width: 50rem;
     overflow-y: auto;
     flex: 1;
     overflow-y: auto;
@@ -100,8 +100,9 @@
     }
 
     @media (width > 768px) {
-      padding: 0 3rem;
+      padding: 0 1rem;
       gap: 4rem;
+      justify-content: flex-start;
     }
   }
 
