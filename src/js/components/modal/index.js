@@ -5,12 +5,12 @@ import { TfiClose } from "react-icons/tfi";
 
 const e = React.createElement;
 
-function Modal({ title, children }) {
+function Modal({ title, children, cClass }) {
   const dispatch = useDispatch();
   const closeModal = () => dispatch(close());
   return e(
     "div",
-    { className: "modal" },
+    { className: `modal ${cClass}` },
     e(
       "div",
       { className: "modal__header" },

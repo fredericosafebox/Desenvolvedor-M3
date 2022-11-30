@@ -3,6 +3,7 @@
 @use "aside";
 @use "shop";
 @use "modal";
+@use "custom";
 @import "reset";
 
 * {
@@ -41,6 +42,71 @@
         flex-direction: row;
       }
     }
+  }
+
+  .aside__filters {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    .details {
+      .details__summary {
+        font-size: 1.5rem;
+        color: root.$grey-2;
+        font-weight: 400;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        .details__summary--arrow {
+          transition: 0.1s;
+        }
+      }
+
+      &[open] .details__summary .details__summary--arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    .aside__buttonBox {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .aside__buttonBox--clean {
+        color: root.$grey-2;
+        font-weight: 400;
+        font-size: 0.9rem;
+        padding: 0.5rem 3.5rem;
+        border: 1px solid root.$grey-2;
+      }
+    }
+
+    .aside__filters--sizes {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 50%;
+      flex-wrap: wrap;
+    }
+  }
+
+  .active {
+    width: 100%;
+  }
+
+  .inactive {
+    width: 0;
+  }
+
+  .sorry {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: root.$grey-2;
+    font-size: 1.2rem;
+    width: 100%;
   }
 }
 

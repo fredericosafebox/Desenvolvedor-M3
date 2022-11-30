@@ -2,6 +2,7 @@
 
 .shop {
   display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 1rem 0.5rem;
   flex: 1;
@@ -9,7 +10,7 @@
 
   .shop__products {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     width: 100%;
     flex-wrap: wrap;
@@ -94,12 +95,29 @@
       }
     }
 
-    .shop__products--loader {
+    @media (width > 375px) {
+      justify-content: center;
     }
 
     @media (width > 768px) {
       padding: 0 3rem;
       gap: 4rem;
+    }
+  }
+
+  .shop__loadMore {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .shop__loadMore--button {
+      background: root.$primary;
+      color: root.$pure-white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.5rem 2rem;
     }
   }
 }

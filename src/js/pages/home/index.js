@@ -8,6 +8,7 @@ import OrderByMobile from "../../components/order_by_Mobile";
 import FilterByMobile from "../../components/filter_by_mobile";
 import { useSelector, useDispatch } from "react-redux";
 import { loadList } from "../../../store/reducers/productsSlice.reducer";
+import { setWidth } from "../../../store/reducers/viewSlice.reducer";
 
 const e = React.createElement;
 
@@ -20,17 +21,20 @@ function Home() {
       dispatch(loadList(result));
     };
     getProducts();
+    dispatch(setWidth(window.innerWidth));
+    window.addEventListener("resize", (e) =>
+      dispatch(setWidth(e.currentTarget.innerWidth))
+    );
   }, []);
 
-  const { value: isModal, view } = useSelector((state) => state.modal);
-
+  const isMobile = useSelector((state) => state.view.isMobile);
   return e(
     "main",
     { className: "app__main" },
     e(Header),
     e("div", { className: "app__main--wrapper" }, e(Aside), e(Shop)),
-    isModal && view == "order" && e(OrderByMobile),
-    isModal && view == "filter" && e(FilterByMobile)
+    isMobile && e(OrderByMobile),
+    isMobile && e(FilterByMobile)
   );
 }
 

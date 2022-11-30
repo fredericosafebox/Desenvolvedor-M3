@@ -5,13 +5,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 0;
   max-width: 765px;
   height: 100%;
   background: root.$pure-white;
-  transition: 1s;
+  transition: 0.5s;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   .modal__header {
     display: flex;
@@ -20,7 +21,7 @@
     height: 5rem;
     width: 100%;
     border-bottom: 1px solid root.$grey-2;
-    padding: 0 2rem;
+    padding: 0 1rem;
     min-width: 20rem;
 
     .modal__header--title {
@@ -38,6 +39,6 @@
     scrollbar-gutter: true;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 0 1rem;
   }
 }

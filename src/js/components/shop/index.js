@@ -1,10 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Card from "../card";
+import { loadMore } from "../../../store/reducers/productsSlice.reducer";
+
 const e = React.createElement;
 
 function Shop() {
-  const products = useSelector((state) => state.products.value);
+  const dispatch = useDispatch();
+  const {
+    value: allProducts,
+    filteredList,
+    tagCounter,
+    range,
+  } = useSelector((state) => state.products);
 
   return e(
     "main",
@@ -12,7 +20,29 @@ function Shop() {
     e(
       "ul",
       { className: "shop__products" },
-      products.map((product) => e(Card, { data: product, key: product.id }))
+      tagCounter < 1 &&
+        allProducts
+          .filter((product, index) => index < range)
+          .map((product) => e(Card, { data: product, key: product.id })),
+      tagCounter >= 1 &&
+        filteredList
+          .filter((product, index) => index < range)
+          .map((product) => e(Card, { data: product, key: product.id })),
+      tagCounter >= 1 &&
+        filteredList.length == 0 &&
+        e("span", { className: "sorry" }, "Nenhum produto encontrado :(")
+    ),
+    e(
+      "div",
+      { className: "shop__loadMore" },
+      e(
+        "button",
+        {
+          className: "shop__loadMore--button",
+          onClick: () => dispatch(loadMore()),
+        },
+        "CARREGAR MAIS"
+      )
     )
   );
 }

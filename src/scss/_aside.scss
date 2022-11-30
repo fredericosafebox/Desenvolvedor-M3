@@ -5,6 +5,25 @@
   flex-direction: column;
   width: 100%; //mobile first
 
+  .aside__menu {
+    h3 {
+      font-weight: 400;
+      color: root.$grey-3;
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .aside__filters--sizes {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+
   h2 {
     font-size: 2rem;
     color: root.$grey-3;
@@ -43,6 +62,10 @@
   @media (width > 768px) {
     flex: 1;
     max-width: 15rem;
-    background: blue;
+    padding: 1rem;
+
+    h2 {
+      text-align: start;
+    }
   }
 }
