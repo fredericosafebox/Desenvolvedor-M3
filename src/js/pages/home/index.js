@@ -62,7 +62,7 @@ function Home() {
           )
         )
     ),
-    e("foot", { className: "footer" }, "M3: Implantação de E-commerce VTEX"),
+    e("footer", { className: "footer" }, "M3: Implantação de E-commerce VTEX"),
     isMobile && e(OrderByMobile),
     isMobile && e(FilterByMobile),
     isCart && e(Cart)

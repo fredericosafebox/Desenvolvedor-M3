@@ -26,11 +26,13 @@ const updateFilteredList = (state) => {
     ));
 
   state.tags.prices.length > 0 &&
-    (state.filteredList = state.filteredList.filter(
-      (prod) =>
-        prod.price >= Math.min(...state.tags.prices) &&
-        prod.price <= Math.max(...state.tags.prices)
-    ));
+    (state.filteredList = state.filteredList.filter((prod) => {
+      const fit = state.tags.prices.filter((tag) => {
+        const [min, max] = tag.split(";");
+        return prod.price >= Number(min) && prod.price <= Number(max);
+      });
+      return fit.length > 0;
+    }));
 };
 
 export const produceSlice = createSlice({
@@ -67,11 +69,13 @@ export const produceSlice = createSlice({
           ));
 
         state.tags.prices.length > 0 &&
-          (result = result.filter(
-            (prod) =>
-              prod.price >= Math.min(...state.tags.prices) &&
-              prod.price <= Math.max(...state.tags.prices)
-          ));
+          (result = result.filter((prod) => {
+            const fit = state.tags.prices.filter((tag) => {
+              const [min, max] = tag.split(";");
+              return prod.price >= Number(min) && prod.price <= Number(max);
+            });
+            return fit.length > 0;
+          }));
         state.filteredList = [...result];
       }
     },
@@ -91,11 +95,13 @@ export const produceSlice = createSlice({
           //state.tags.sizes.includes(prod.size)
         );
         state.tags.prices.length > 0 &&
-          (result = result.filter(
-            (prod) =>
-              prod.price >= Math.min(...state.tags.prices) &&
-              prod.price <= Math.max(...state.tags.prices)
-          ));
+          (result = result.filter((prod) => {
+            const fit = state.tags.prices.filter((tag) => {
+              const [min, max] = tag.split(";");
+              return prod.price >= Number(min) && prod.price <= Number(max);
+            });
+            return fit.length > 0;
+          }));
 
         state.tags.colors.length > 0 &&
           (result = result.filter((prod) =>
@@ -105,22 +111,22 @@ export const produceSlice = createSlice({
       }
     },
     addPrice(state, action) {
-      //hash min;max => split => armazenar no reducer
       const [min, max] = action.payload.split(";");
-      state.tags.prices = [...state.tags.prices, Number(min), Number(max)];
-
+      state.tags.prices = [...state.tags.prices, action.payload];
       if (state.tagCounter < 1) {
-        const products = state.value.filter(
-          (prod) => prod.price >= Number(min) && prod.price <= Number(max)
-        );
+        const products = state.value.filter((prod) => {
+          return prod.price >= Number(min) && prod.price <= Number(max);
+        });
         state.filteredList = [...products];
         state.tagCounter += 1;
       } else {
-        let result = state.value.filter(
-          (prod) =>
-            prod.price >= Math.min(...state.tags.prices) &&
-            prod.price <= Math.max(...state.tags.prices)
-        );
+        let result = state.value.filter((prod) => {
+          const fit = state.tags.prices.filter((tag) => {
+            const [min, max] = tag.split(";");
+            return prod.price >= Number(min) && prod.price <= Number(max);
+          });
+          return fit.length > 0;
+        });
         state.tags.sizes.length > 0 &&
           (result = result.filter(
             (prod) =>
@@ -159,9 +165,8 @@ export const produceSlice = createSlice({
       }
     },
     removePrice(state, action) {
-      const [min, max] = action.payload.split(";");
       state.tags.prices = state.tags.prices.filter(
-        (price) => price !== Number(min) && price !== Number(max)
+        (price) => price !== action.payload
       );
       state.tagCounter -= 1;
       if (state.tagCounter == 0) {
