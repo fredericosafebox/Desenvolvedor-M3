@@ -9,6 +9,8 @@ import FilterByMobile from "../../components/filter_by_mobile";
 import { useSelector, useDispatch } from "react-redux";
 import { loadList } from "../../../store/reducers/productsSlice.reducer";
 import { setWidth } from "../../../store/reducers/viewSlice.reducer";
+import OrderByChart from "../../components/order_by_chart";
+import { SlArrowRight } from "react-icons/sl";
 
 const e = React.createElement;
 
@@ -32,7 +34,33 @@ function Home() {
     "main",
     { className: "app__main" },
     e(Header),
-    e("div", { className: "app__main--wrapper" }, e(Aside), e(Shop)),
+    e(
+      "div",
+      { className: "app__main--wrapper" },
+      e(Aside),
+      e(Shop),
+      !isMobile &&
+        e(
+          "div",
+          { className: "floating__menu" },
+          e(
+            "details",
+            { className: "details" },
+            e(
+              "summary",
+              { className: "details__summary" },
+              "Ordenar por:",
+              e(
+                "span",
+                { className: "details__summary--arrow" },
+                e(SlArrowRight, { size: 16 })
+              )
+            ),
+            e(OrderByChart)
+          )
+        )
+    ),
+    e("foot", { className: "footer" }, "M3: Implantação de E-commerce VTEX"),
     isMobile && e(OrderByMobile),
     isMobile && e(FilterByMobile)
   );

@@ -7,7 +7,7 @@
   padding: 1rem 0.5rem;
   flex: 1;
   min-width: 20rem;
-
+  overflow-y: auto;
   .shop__products {
     display: flex;
     justify-content: flex-start;
@@ -17,10 +17,20 @@
     max-width: 50rem;
     overflow-y: auto;
     flex: 1;
-    overflow-y: auto;
-
+    scrollbar-gutter: stable;
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+      border-radius: 0.3rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: root.$grey-4;
+      border-radius: 0.3rem;
+    }
     .shop__products--card {
-      width: 9rem;
+      width: 8.5rem;
       height: 22.2rem;
       display: flex;
       flex-direction: column;
@@ -100,7 +110,7 @@
     }
 
     @media (width > 768px) {
-      padding: 0 1rem;
+      padding: 2rem 1rem 0 1rem;
       gap: 4rem;
       justify-content: flex-start;
     }

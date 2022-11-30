@@ -32,18 +32,19 @@ function Shop() {
         filteredList.length == 0 &&
         e("span", { className: "sorry" }, "Nenhum produto encontrado :(")
     ),
-    e(
-      "div",
-      { className: "shop__loadMore" },
+    range < allProducts.length &&
       e(
-        "button",
-        {
-          className: "shop__loadMore--button",
-          onClick: () => dispatch(loadMore()),
-        },
-        "CARREGAR MAIS"
+        "div",
+        { className: "shop__loadMore" },
+        e(
+          "button",
+          {
+            className: "shop__loadMore--button",
+            onClick: () => dispatch(loadMore()),
+          },
+          "CARREGAR MAIS"
+        )
       )
-    )
   );
 }
 

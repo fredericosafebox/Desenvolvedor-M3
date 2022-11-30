@@ -6,6 +6,19 @@
   width: 100%; //mobile first
 
   .aside__menu {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+      border-radius: 0.3rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: root.$grey-4;
+      border-radius: 0.3rem;
+    }
     h3 {
       font-weight: 400;
       color: root.$grey-3;
@@ -62,7 +75,8 @@
   @media (width > 768px) {
     flex: 1;
     max-width: 15rem;
-    padding: 1rem;
+    padding: 2rem 0 0 2rem;
+    max-height: calc(100vh - 4rem);
 
     h2 {
       text-align: start;
